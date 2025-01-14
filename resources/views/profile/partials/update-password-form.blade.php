@@ -1,48 +1,93 @@
-<section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Update Password') }}
+<section class="container">
+    <header class="mb-4">
+        <h2 class="h4 fw-bold text-dark">
+            Ubah Kata Sandi
         </h2>
-
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+        <p class="text-muted">
+            Pastikan akun Anda menggunakan kata sandi yang panjang dan acak untuk tetap aman.
         </p>
     </header>
 
-    <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('password.update') }}" class="mt-4">
         @csrf
         @method('put')
 
-        <div>
-            <x-input-label for="update_password_current_password" :value="__('Current Password')" />
-            <x-text-input id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
-            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
+        <!-- Kata Sandi Saat Ini -->
+        <div class="mb-3">
+            <label for="current_password" class="form-label">Kata Sandi Saat Ini</label>
+            <div class="input-group">
+                <input type="password" id="current_password" name="current_password" class="form-control"
+                    autocomplete="current-password">
+                <button type="button" class="btn btn-outline-secondary toggle-password"
+                    data-target="#current_password">
+                    <i class="bi bi-eye"></i>
+                </button>
+            </div>
+            @if ($errors->updatePassword->has('current_password'))
+                <div class="text-danger mt-1">{{ $errors->updatePassword->first('current_password') }}</div>
+            @endif
         </div>
 
-        <div>
-            <x-input-label for="update_password_password" :value="__('New Password')" />
-            <x-text-input id="update_password_password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
-            <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
+        <!-- Kata Sandi Baru -->
+        <div class="mb-3">
+            <label for="password" class="form-label">Kata Sandi Baru</label>
+            <div class="input-group">
+                <input type="password" id="password" name="password" class="form-control" autocomplete="new-password">
+                <button type="button" class="btn btn-outline-secondary toggle-password" data-target="#password">
+                    <i class="bi bi-eye"></i>
+                </button>
+            </div>
+            @if ($errors->updatePassword->has('password'))
+                <div class="text-danger mt-1">{{ $errors->updatePassword->first('password') }}</div>
+            @endif
         </div>
 
-        <div>
-            <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
-            <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
-            <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
+        <!-- Konfirmasi Kata Sandi -->
+        <div class="mb-3">
+            <label for="password_confirmation" class="form-label">Konfirmasi Kata Sandi</label>
+            <div class="input-group">
+                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control"
+                    autocomplete="new-password">
+                <button type="button" class="btn btn-outline-secondary toggle-password"
+                    data-target="#password_confirmation">
+                    <i class="bi bi-eye"></i>
+                </button>
+            </div>
+            @if ($errors->updatePassword->has('password_confirmation'))
+                <div class="text-danger mt-1">{{ $errors->updatePassword->first('password_confirmation') }}</div>
+            @endif
         </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <!-- Tombol Simpan -->
+        <div class="d-flex align-items-center gap-3">
+            <button type="submit" class="btn btn-primary">Simpan</button>
 
             @if (session('status') === 'password-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                <span class="text-success" id="password-update-message" style="display: none;">
+                    Disimpan.
+                </span>
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('password-update-message').style.display = 'inline';
+                    }, 2000);
+                </script>
             @endif
         </div>
     </form>
 </section>
+
+<script>
+    // Toggle visibility for password fields
+    document.querySelectorAll('.toggle-password').forEach(button => {
+        button.addEventListener('click', function() {
+            const target = document.querySelector(this.dataset.target);
+            if (target.type === 'password') {
+                target.type = 'text';
+                this.innerHTML = '<i class="bi bi-eye-slash"></i>';
+            } else {
+                target.type = 'password';
+                this.innerHTML = '<i class="bi bi-eye"></i>';
+            }
+        });
+    });
+</script>
