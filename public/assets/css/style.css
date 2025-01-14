@@ -1,0 +1,543 @@
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../img/background.jpg") center center/cover no-repeat;
+    color: white;
+    padding: 150px 20px;
+    text-align: center;
+    position: relative;
+}
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+.hero p {
+    font-size: 1.5rem;
+    margin-top: 15px;
+}
+
+/* stat */
+.statistics {
+    background-color: #f8f9fa;
+    padding: 50px 20px;
+}
+/* navbar */
+/* Navbar */
+.navbar {
+    font-size: 0.95rem;
+    padding: 15px 20px;
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+.navbar-brand:hover {
+    color: #0056b3;
+}
+
+/* Link Navigasi */
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: #555;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+    transform: translateY(-2px); /* Sedikit naik saat hover */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-item {
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+/* Tombol Login */
+.btn-outline-primary {
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1.05); /* Sedikit membesar */
+}
+
+/* Hover Animasi */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Berita Utama */
+/* Umum untuk Gambar Berita */
+/* Gambar Berita dengan Hover Efek */
+/* Wrapper untuk Gambar */
+.news-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.news-image {
+    width: 100%;
+    height: 510px;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Animasi gambar */
+}
+
+/* Hover untuk Gambar */
+.news-card-large:hover .news-image {
+    transform: scale(1.1); /* Zoom-in gambar */
+}
+
+/* Overlay Teks di Atas Gambar */
+.news-caption-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6); /* Latar transparan */
+    color: white;
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: background 0.3s ease; /* Animasi latar */
+}
+
+.news-card-large:hover .news-caption-overlay {
+    background: rgba(0, 0, 0, 0.8); /* Warna lebih gelap saat hover */
+}
+
+/* Teks dalam Overlay */
+.news-caption-overlay .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    transition: color 0.3s, transform 0.3s ease; /* Animasi teks */
+}
+
+.news-caption-overlay .card-title:hover {
+    color: #007bff; /* Warna teks berubah saat hover */
+}
+
+.news-caption-overlay .news-date,
+.news-caption-overlay .news-author {
+    font-size: 0.85rem;
+    color: #eaeaea;
+}
+
+/* Carousel Caption */
+/* Card untuk Berita Kecil */
+.news-card {
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+}
+
+.news-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.news-card img {
+    height: 120px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.news-card .card-body {
+    padding: 10px;
+}
+
+.news-card .card-title {
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.news-card .news-date,
+.news-card .news-author {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* Berita perkategori */
+/* Kategori Umum */
+.category-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 10px;
+    color: white;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.category-prestasi {
+    background-color: #198754; /* Hijau Muda */
+}
+
+.category-berita {
+    background-color: #ffc107;
+}
+
+.category-pengumuman {
+    background-color: #dc3545; /* Kuning */
+}
+
+/* Berita Besar (Umum) */
+.main-card {
+    border: none;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.main-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+
+.main-title:hover {
+    color: #007bff;
+}
+
+.main-meta {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* Badge (Generik) */
+.badge {
+    font-size: 0.75rem;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.badge-galeri {
+    background-color: #007bff; /* Biru */
+}
+
+.badge-prestasi {
+    background-color: #198754; /* Hijau */
+}
+.badge-pengumuman {
+    background-color: #dc3545; /* Kuning */
+}
+.badge-berita {
+    background-color: #ffc107; /* Hijau */
+}
+
+/* Berita Kecil (Umum) */
+/* Berita Kecil (Umum) */
+.small-news {
+    display: flex;
+    width: 340px;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #dee2e6; /* Garis di sekitar card */
+    border-radius: 5px; /* Membuat sudut membulat */
+    padding: 10px; /* Memberi ruang di dalam card */
+    background-color: #f8f9fa; /* Warna latar belakang */
+    overflow: hidden; /* Mencegah elemen keluar */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+    transition: box-shadow 0.3s ease; /* Animasi hover */
+}
+
+.small-news:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); /* Efek bayangan pada hover */
+}
+
+.small-image {
+    width: 100px; /* Lebar gambar */
+    height: 70px; /* Tinggi gambar */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    border-radius: 5px; /* Membuat sudut gambar membulat */
+    margin-right: 10px; /* Jarak antara gambar dan teks */
+    flex-shrink: 0; /* Mencegah gambar menyusut */
+}
+
+.small-title {
+    font-size: 0.8rem; /* Ukuran font lebih kecil */
+    word-wrap: break-word; /* Memastikan teks turun ke bawah jika panjang */
+    line-height: 1.2; /* Memberi jarak antar baris */
+    color: #000;
+}
+
+.small-link {
+    text-decoration: none; /* Hilangkan garis bawah */
+    color: #000; /* Warna teks */
+}
+
+.small-link:hover {
+    color: #007bff; /* Warna teks saat hover */
+}
+
+.small-meta {
+    font-size: 0.75rem; /* Ukuran font lebih kecil untuk metadata */
+    color: #6c757d; /* Warna abu-abu untuk teks sekunder */
+    margin-top: 4px; /* Memberi jarak dengan judul */
+    line-height: 1.2; /* Menjaga jarak antar baris */
+    word-wrap: break-word; /* Memastikan metadata turun ke bawah jika panjang */
+}
+
+/* Bagian Kanan  */
+/* Widget Umum */
+.widget-modern {
+    background-color: #ffffff; /* Putih bersih */
+    border: 1px solid #eaeaea; /* Border tipis */
+    border-radius: 10px; /* Sudut melengkung */
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow lembut */
+}
+
+.widget-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Widget Kepala Sekolah */
+.widget-headmaster-image {
+    width: 200px; /* Gambar memenuhi lebar widget */
+    height: 300px; /* Tinggi otomatis sesuai rasio */
+    object-fit: cover; /* Gambar tetap rapi */
+    border-radius: 10px; /* Sudut melengkung */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Shadow lebih lembut */
+    margin-bottom: 15px; /* Spasi bawah untuk pemisahan dengan teks */
+}
+
+.widget-headmaster-name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Widget News */
+.widget-news-item {
+    align-items: center;
+}
+
+.widget-news-image {
+    width: 70px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.widget-news-title {
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.widget-news-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.widget-news-link:hover {
+    color: #007bff;
+}
+
+.widget-news-meta {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* Widget Jumlah Pengunjung */
+.widget-visitors {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.widget-visitors li {
+    margin-bottom: 10px;
+}
+
+.widget-visitors li span {
+    display: inline-block;
+    width: 120px;
+    font-weight: bold;
+}
+
+.widget-visitors li strong {
+    color: #007bff;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.footer-logo {
+    max-width: 120px;
+    height: auto;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #0056b3;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    color: #003c82;
+}
+
+.footer ul {
+    padding: 0;
+}
+
+.footer ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.footer h5 {
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+.footer .bi {
+    font-size: 1.2rem;
+    margin-right: 8px;
+    color: #0056b3;
+}
+
+.footer .bi:hover {
+    color: #003c82;
+}
+
+/* Animasi Fade In */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Profile */
+.profile-header {
+    background-color: #0056b3;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.profile-header h1 {
+    font-size: 2rem;
+}
+
+.profile-section {
+    margin-top: 30px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section h2 {
+    font-size: 1.5rem;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.profile-list {
+    font-size: 1rem;
+}
+
+.profile-list li {
+    margin-bottom: 10px;
+}
+
+.profile-icon {
+    color: #0056b3;
+    margin-right: 10px;
+}
+
+/* Sejarah  */
+/* Khusus untuk bagian Sejarah Sekolah */
+.sejarah-sekolah-section {
+    text-align: center; /* Konten section tetap berada di tengah layar */
+}
+
+.sejarah-sekolah-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0056b3;
+    text-align: center;
+}
+
+.sejarah-sekolah-card {
+    max-width: 800px;
+    margin: 0 auto; /* Card tetap berada di tengah secara horizontal */
+    text-align: justify; /* Teks paragraf justify */
+}
+
+.sejarah-sekolah-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify; /* Membuat teks justify */
+}
+
+.sejarah-sekolah-card .sejarah-sekolah-highlight {
+    color: #0056b3;
+    text-align: center; /* Untuk teks highlight tetap rata tengah */
+}
+
+.sejarah-sekolah-link {
+    text-decoration: none;
+    color: #0056b3;
+}
+
+.sejarah-sekolah-link:hover {
+    text-decoration: underline;
+    color: #003c82;
+}

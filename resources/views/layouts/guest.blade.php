@@ -1,30 +1,87 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beranda - SMAN 3 Barabai</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    {{-- Meta SEO --}}
+    <meta name="description"
+        content="Selamat datang di website resmi SMAN 3 Barabai, SMA unggulan di Barabai dengan berbagai informasi tentang sekolah, program, dan kegiatan terbaru." />
+    <meta name="keywords"
+        content="SMAN 3 Barabai, Sekolah Menengah Atas, SMA Barabai, Sekolah Negeri, Informasi Sekolah, Pendidikan Barabai" />
+    <meta name="author" content="SMAN 3 Barabai" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Beranda - SMAN 3 Barabai" />
+    <meta property="og:description"
+        content="Selamat datang di website resmi SMAN 3 Barabai. Temukan berbagai informasi seputar sekolah, program unggulan, dan kegiatan terbaru." />
+    <meta property="og:image" content="{{ asset('assets/img/logo.png') }}" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Beranda - SMAN 3 Barabai" />
+    <meta name="twitter:description"
+        content="Selamat datang di website resmi SMAN 3 Barabai. Dapatkan informasi terbaru tentang sekolah kami." />
+    <meta name="twitter:image" content="{{ asset('assets/img/logo.png') }}" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+    {{-- Favicon --}}
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo.png') }}" />
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+    {{-- Bootstrap 5 --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    {{-- Bootstrap Icons --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    {{-- Custom CSS --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+</head>
+
+
+<body>
+    {{-- Navbar --}}
+    @include('layouts.partial.navbar')
+
+    {{-- Hero Section --}}
+    <div class="hero">
+        {{-- BG cek di CSS --}}
+        <h1>Selamat Datang di SMAN 3 Barabai</h1>
+        <p>Unggul dalam Prestasi, Berkarakter, dan Inovatif</p>
+    </div>
+
+    {{-- Statistik --}}
+    <div id="statistik" class="statistics">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <h2>500</h2>
+                    <p>Peserta Didik</p>
+                </div>
+                <div class="col-md-3">
+                    <h2>40</h2>
+                    <p>Guru</p>
+                </div>
+                <div class="col-md-3">
+                    <h2>12</h2>
+                    <p>Rombel</p>
+                </div>
+                <div class="col-md-3">
+                    <h2>30K</h2>
+                    <p>Luas Area (m²)</p>
+                </div>
             </div>
         </div>
-    </body>
+    </div>
+
+    {{-- Main Content --}}
+    @yield('content')
+
+    {{-- footer --}}
+    @include('layouts.partial.footer')
+    {{-- Boostrap 5 --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
 </html>
