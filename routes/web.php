@@ -36,6 +36,7 @@ Route::get('/akademik/kalender', [KalenderController::class, 'index'])->name('ak
 Route::get('/tatausaha/sop', [SopController::class, 'index'])->name('tatausaha.sop');
 Route::get('/tatausaha/ebook', [EbookController::class, 'index'])->name('tatausaha.ebook');
 
+use App\Http\Controllers\SekolahDataController;
 
 
 
@@ -50,6 +51,13 @@ Route::prefix('dashboard/news')->name('dashboard.news.')->group(function () {
     Route::get('/{news}/edit', [NewsManagementController::class, 'edit'])->name('edit');
     Route::put('/{news}', [NewsManagementController::class, 'update'])->name('update');
 });
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('/sekolahdata', [SekolahDataController::class, 'index'])->name('dashboard.sekolahdata.index');
+    Route::get('/sekolahdata/{id}/edit', [SekolahDataController::class, 'edit'])->name('dashboard.sekolahdata.edit');
+    Route::put('/sekolahdata/{id}', [SekolahDataController::class, 'update'])->name('dashboard.sekolahdata.update');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

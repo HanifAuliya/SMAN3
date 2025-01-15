@@ -4,20 +4,20 @@
     <div class="py-4">
         <div class="container">
             <div class="row">
-                {{-- Dashboard - Daftar Lokasi --}}
+                {{-- Dashboard - Daftar Berita --}}
                 <div class="col-12 mb-4">
                     <div class="card h-100 border-light shadow-sm">
                         <div class="card-body">
-                            <h2 class="h5 fw-semibold text-dark mb-0">Dashboard - Daftar Lokasi</h2>
+                            <h2 class="h5 fw-semibold text-dark mb-0">Dashboard - Daftar Berita</h2>
                             <p class="text-muted small">
-                                Halaman ini menampilkan daftar Berita yang sudah terdaftar. Anda dapat mencari
-                                lokasi berdasarkan nama, kategori, atau instansi. Anda juga dapat
-                                menambahkan
-                                atau menghapus data yang ada.
+                                Halaman ini menampilkan daftar berita yang terdaftar dalam sistem. Anda dapat mencari berita
+                                berdasarkan judul, kategori, atau pengirim. Selain itu, Anda dapat menambahkan, mengedit,
+                                atau menghapus data berita yang ada.
                             </p>
                         </div>
                     </div>
                 </div>
+
                 {{-- Manual Pengguna --}}
                 <div class="col-12 mb-4">
                     <div class="card h-100 border-light shadow-sm">
@@ -25,18 +25,18 @@
                             <div>
                                 <h2 class="h6 fw-semibold text-dark mb-1">Manual Pengguna</h2>
                                 <p class="text-muted small mb-0">
-                                    Panduan lengkap untuk menggunakan aplikasi ini tersedia. Klik tombol di samping
-                                    untuk membaca manual pengguna.
+                                    Panduan lengkap untuk mengelola data berita belum tersedia. Cooming soon !
                                 </p>
                             </div>
                             <div>
-                                <a href="" target="_blank" class="btn btn-primary">
-                                    <i class="fas fa-file-pdf me-1"></i> Lihat Manual Pengguna
+                                <a href="/manual" target="_blank" class="btn btn-dark">
+                                    <i class="fas fa-file-pdf me-1"></i> Manual Pengguna
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 {{-- Tabel --}}
                 {{-- Filter dan Search --}}
                 <div class="col-12 mb-4">
@@ -65,8 +65,8 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-warning w-100">
-                                <i class="fas fa-search"></i> Filter
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="bi bi-search"></i> Cari
                             </button>
                         </div>
                     </form>
@@ -105,10 +105,10 @@
                                                     <td>{{ $item->created_at->format('d M Y') }}</td>
                                                     <td>
                                                         <a href="{{ route('dashboard.news.edit', $item->id) }}"
-                                                            class="btn btn-sm btn-outline-warning">
+                                                            class="btn btn-sm btn-warning">
                                                             <i class="fas fa-edit"></i> Edit
                                                         </a>
-                                                        <button class="btn btn-sm btn-outline-danger delete-btn"
+                                                        <button class="btn btn-sm btn-danger delete-btn"
                                                             data-id="{{ $item->id }}"
                                                             data-title="{{ $item->title }}">
                                                             <i class="fas fa-trash"></i> Hapus

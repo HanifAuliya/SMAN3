@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Category;
+use App\Models\SekolahData;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -36,6 +37,7 @@ class NewsController extends Controller
             'month' => 4500,
             'total' => 120000,
         ];
+        $data = SekolahData::all();
 
         return view('home', [
             'bigNews' => $bigNews,
@@ -48,6 +50,7 @@ class NewsController extends Controller
             'smallPengumumanNews' => $pengumumanNews['smallNews'],
             'latestNews' => $latestNews,
             'visitorCounts' => $visitorCounts,
+            'sekolahData' => $data, // Tambahkan data ini
         ]);
     }
 
@@ -68,6 +71,8 @@ class NewsController extends Controller
             ->latest()
             ->get();
 
+
+
         return [
             'mainNews' => $news->first(), // Berita besar
             'smallNews' => $news->skip(1)->take(4), // Berita kecil
@@ -81,6 +86,7 @@ class NewsController extends Controller
     public function show($slug)
     {
         $news = News::where('slug', $slug)->with('category')->firstOrFail();
-        return view('news.show', compact('news'));
+        $latestNews = News::with(['user', 'category'])->latest()->take(5)->get();
+        return view('news.show', compact('news', 'latestNews'));
     }
 }

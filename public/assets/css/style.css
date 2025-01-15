@@ -250,7 +250,6 @@
 .badge-galeri {
     background-color: #007bff; /* Biru */
 }
-
 .badge-prestasi {
     background-color: #198754; /* Hijau */
 }
@@ -259,6 +258,9 @@
 }
 .badge-berita {
     background-color: #ffc107; /* Hijau */
+}
+.badge-PPDB {
+    background-color: #ff8000; /* Hijau */
 }
 
 /* Berita Kecil (Umum) */
@@ -539,4 +541,11 @@
 .sejarah-sekolah-link:hover {
     text-decoration: underline;
     color: #003c82;
+}
+
+.counter {
+    font-size: 2.5rem;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    color: #007bff;
 }

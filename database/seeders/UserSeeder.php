@@ -13,15 +13,14 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Buat 10 user menggunakan factory
-        User::factory(10)->create();
+
 
         // Tambahkan admin secara manual (opsional)
         User::factory()->create([
-            'name' => 'Admin User',
+            'name' => 'Admin',
             'username' => 'admin',
             'email' => 'admin@example.com',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('inipasswordadmin1'),
         ]);
     }
 }

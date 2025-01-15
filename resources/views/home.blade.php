@@ -3,26 +3,42 @@
 @section('content')
     {{-- Statistik --}}
     <div id="statistik" class="statistics">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-3">
-                    <h2>500</h2>
-                    <p>Peserta Didik</p>
-                </div>
-                <div class="col-md-3">
-                    <h2>40</h2>
-                    <p>Guru</p>
-                </div>
-                <div class="col-md-3">
-                    <h2>12</h2>
-                    <p>Rombel</p>
-                </div>
-                <div class="col-md-3">
-                    <h2>30K</h2>
-                    <p>Luas Area (m²)</p>
-                </div>
+        <div class="container py-2">
+            <div class="row d-flex justify-content-center align-items-center text-center">
+                @foreach ($sekolahData as $item)
+                    <div class="col-md-2 mb-4">
+                        <h2 class="counter" data-target="{{ $item->jumlah }}">0</h2>
+                        <p>{{ $item->kategori }}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const counters = document.querySelectorAll('.counter');
+
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target'); // Ambil nilai target
+                    const duration = 2000; // Durasi animasi (dalam milidetik)
+                    const step = target / (duration / 10); // Langkah animasi
+
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += step;
+                            counter.textContent = Math.ceil(current); // Tampilkan nilai yang dihitung
+                            setTimeout(updateCounter, 10); // Update setiap 10ms
+                        } else {
+                            counter.textContent = target; // Pastikan nilai akhir sama dengan target
+                        }
+                    };
+
+                    updateCounter();
+                });
+            });
+        </script>
+
     </div>
 
     <section id="berita" class="py-5">

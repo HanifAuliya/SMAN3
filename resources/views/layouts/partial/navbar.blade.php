@@ -152,12 +152,21 @@
                     <a class="nav-link" href="galeri-unduhan.html">Galeri</a>
                 </li>
 
-                {{-- Tombol Login --}}
+                {{-- Tombol Login atau Dashboard --}}
                 <li class="nav-item">
-                    <a href="{{ route('login') }}" class="btn btn-outline-primary ms-3 px-4 py-2 rounded-pill">
-                        Login
-                    </a>
+                    @guest
+                        {{-- Tampilkan tombol Login jika pengguna belum login --}}
+                        <a href="{{ route('login') }}" class="btn btn-outline-primary ms-3 px-4 py-2 rounded-pill">
+                            Login
+                        </a>
+                    @else
+                        {{-- Tampilkan tombol Dashboard jika pengguna sudah login --}}
+                        <a href="{{ route('dashboard') }}" class="btn btn-outline-primary ms-3 px-4 py-2 rounded-pill">
+                            Dashboard
+                        </a>
+                    @endguest
                 </li>
+
             </ul>
         </div>
     </div>

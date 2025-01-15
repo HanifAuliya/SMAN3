@@ -44,3 +44,8 @@
         transform: translateY(-5px);
     }
 }
+
+.dropdown-menu {
+    z-index: 1055 !important; /* Bootstrap default z-index untuk dropdown */
+    position: absolute; /* Pastikan dropdown tidak dipengaruhi oleh elemen induk */
+}
