@@ -49,7 +49,7 @@
                     <h4 class="widget-title mb-3">Berita Terbaru</h4>
                     @foreach ($latestNews as $news)
                         <div class="d-flex mb-3 widget-news-item">
-                            <img src="{{ asset($news->image) }}" alt="{{ $news->title }}"
+                            <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}"
                                 class="widget-news-image rounded shadow-sm me-3"
                                 style="width: 70px; height: 70px; object-fit: cover;" />
                             <div>

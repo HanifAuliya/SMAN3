@@ -145,7 +145,7 @@
                             @if ($mainPrestasiNews)
                                 <div class="col-lg-7">
                                     <div class="card main-card mb-3">
-                                        <img src="{{ asset($mainPrestasiNews->image) }}"
+                                        <img src="{{ asset('storage/' . $mainPrestasiNews->image) }}"
                                             alt="{{ $mainPrestasiNews->title }}" class="main-image" />
                                         <div class="card-body">
                                             <div class="d-flex">
@@ -176,7 +176,7 @@
                             <div class="col-lg-4">
                                 @foreach ($smallPrestasiNews as $news)
                                     <div class="small-news mb-3">
-                                        <img src="{{ asset($news->image) }}" alt="{{ $news->title }}"
+                                        <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}"
                                             class="small-image" />
                                         <div>
                                             <h6 class="small-title">
@@ -205,7 +205,7 @@
                             @if ($mainBeritaSekolahNews)
                                 <div class="col-lg-7">
                                     <div class="card main-card mb-3">
-                                        <img src="{{ asset($mainBeritaSekolahNews->image) }}"
+                                        <img src="{{ asset('storage/' . $mainBeritaSekolahNews->image) }}"
                                             alt="{{ $mainBeritaSekolahNews->title }}" class="main-image" />
                                         <div class="card-body">
                                             <h5 class="mt-2">
@@ -233,7 +233,7 @@
                             <div class="col-lg-4">
                                 @foreach ($smallBeritaSekolahNews as $news)
                                     <div class="small-news mb-3">
-                                        <img src="{{ asset($news->image) }}" alt="{{ $news->title }}"
+                                        <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}"
                                             class="small-image" />
                                         <div>
                                             <h6 class="small-title">
@@ -263,7 +263,7 @@
                             @if ($mainPengumumanNews)
                                 <div class="col-lg-7">
                                     <div class="card main-card mb-3">
-                                        <img src="{{ asset($mainPengumumanNews->image) }}"
+                                        <img src="{{ asset('storage/' . $mainPengumumanNews->image) }}"
                                             alt="{{ $mainPengumumanNews->title }}" class="main-image" />
                                         <div class="card-body">
                                             <h5 class="mt-2">
@@ -291,7 +291,7 @@
                             <div class="col-lg-4">
                                 @foreach ($smallPengumumanNews as $news)
                                     <div class="small-news mb-3">
-                                        <img src="{{ asset($news->image) }}" alt="{{ $news->title }}"
+                                        <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}"
                                             class="small-image" />
                                         <div>
                                             <h6 class="small-title">
@@ -332,7 +332,7 @@
                         <div class="widget-title">Terbaru</div>
                         @foreach ($latestNews as $news)
                             <div class="d-flex mb-3 widget-news-item">
-                                <img src="{{ asset($news->image) }}" alt="{{ $news->title }}"
+                                <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}"
                                     class="widget-news-image" />
                                 <div>
                                     <h6 class="widget-news-title">
