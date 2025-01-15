@@ -15,6 +15,11 @@ use App\Http\Controllers\KalenderController;
 use App\Http\Controllers\SopController;
 use App\Http\Controllers\EbookController;
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Dashboard\NewsManagementController;
+
+
+
 Route::get('/', [NewsController::class, 'index'])->name('home'); // Menampilkan daftar berita di halaman awal
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show'); // Menampilkan detail berita
 
@@ -31,11 +36,20 @@ Route::get('/akademik/kalender', [KalenderController::class, 'index'])->name('ak
 Route::get('/tatausaha/sop', [SopController::class, 'index'])->name('tatausaha.sop');
 Route::get('/tatausaha/ebook', [EbookController::class, 'index'])->name('tatausaha.ebook');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 
+
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::prefix('dashboard/news')->name('dashboard.news.')->group(function () {
+    Route::get('/create', [NewsManagementController::class, 'create'])->name('create');
+    Route::post('/store', [NewsManagementController::class, 'store'])->name('store');
+    Route::delete('/{news}', [NewsManagementController::class, 'destroy'])->name('destroy'); // Route untuk hapus berita
+    Route::get('/{news}/edit', [NewsManagementController::class, 'edit'])->name('edit');
+    Route::put('/{news}', [NewsManagementController::class, 'update'])->name('update');
+});
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

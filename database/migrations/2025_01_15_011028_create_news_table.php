@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('content'); // Konten berita lengkap
             $table->string('slug')->unique(); // Slug untuk URL
             $table->string('image')->nullable(); // Gambar berita
+            $table->string('link')->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Kategori
             $table->timestamps();
         });

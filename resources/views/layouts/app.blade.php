@@ -15,7 +15,10 @@
     {{-- Bootstrap CSS --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+    {{-- Custom CSS --}}
+    <link href="{{ asset('assets/css/dashboard.css') }}" rel="stylesheet">
+    {{-- Sweet alert --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 </head>
 
@@ -36,8 +39,62 @@
     {{-- Animate css --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
-    {{-- Custom CSS --}}
-    <link href="{{ asset('assets/css/dashboard.css') }}" rel="stylesheet">
+
+    {{-- sweet alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tampilkan pesan sukses
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: '{{ session('success') }}',
+                    showConfirmButton: true,
+                    timer: 3000
+                });
+            @endif
+
+            // Tampilkan pesan error
+            @if (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: '{{ session('error') }}',
+                    showConfirmButton: true
+                });
+            @endif
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ambil semua tombol delete
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const newsId = this.getAttribute('data-id');
+                    const newsTitle = this.getAttribute('data-title');
+
+                    Swal.fire({
+                        title: `Hapus Berita "${newsTitle}"?`,
+                        text: "Data yang dihapus tidak dapat dikembalikan.",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Ya, Hapus!',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Submit form delete
+                            document.getElementById(`delete-form-${newsId}`).submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

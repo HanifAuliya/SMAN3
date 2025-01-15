@@ -154,7 +154,7 @@
 
                 {{-- Tombol Login --}}
                 <li class="nav-item">
-                    <a href="login.html" class="btn btn-outline-primary ms-3 px-4 py-2 rounded-pill">
+                    <a href="{{ route('login') }}" class="btn btn-outline-primary ms-3 px-4 py-2 rounded-pill">
                         Login
                     </a>
                 </li>

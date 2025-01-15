@@ -8,6 +8,7 @@ use App\Models\News;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class NewsSeeder extends Seeder
 {
@@ -26,11 +27,6 @@ class NewsSeeder extends Seeder
             'https://picsum.photos/800/600?random=3',
             'https://picsum.photos/800/600?random=4',
             'https://picsum.photos/800/600?random=5',
-            'https://picsum.photos/800/600?random=6',
-            'https://picsum.photos/800/600?random=7',
-            'https://picsum.photos/800/600?random=8',
-            'https://picsum.photos/800/600?random=9',
-            'https://picsum.photos/800/600?random=10',
         ];
 
         // Pastikan ada kategori di database
@@ -50,12 +46,18 @@ class NewsSeeder extends Seeder
         // Membuat 20 berita acak
         foreach (range(1, 20) as $index) {
             $title = $faker->sentence(6);
+
+            // Unduh gambar dan simpan ke storage lokal
+            $randomImage = $faker->randomElement($imageUrls);
+            $imageName = 'news-images/' . uniqid() . '.jpg';
+            Storage::disk('public')->put($imageName, file_get_contents($randomImage));
+
             News::create([
                 'title' => $title,
                 'excerpt' => $faker->paragraph(2),
                 'content' => $faker->paragraphs(5, true),
                 'slug' => Str::slug($title),
-                'image' => $faker->randomElement($imageUrls), // Gambar acak
+                'image' => $imageName, // Path gambar di storage
                 'category_id' => $categories->random()->id, // Kategori acak
                 'user_id' => $users->random()->id, // Pengguna acak
             ]);

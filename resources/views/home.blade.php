@@ -39,27 +39,29 @@
                         <div class="carousel-inner">
                             @foreach ($bigNews as $index => $big)
                                 <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                                    <div class="card news-card-large mb-3 position-relative">
-                                        <div class="news-image-wrapper">
-                                            <img src="{{ asset($big->image) }}" class="news-image w-100"
-                                                alt="{{ $big->title }}" />
-                                            {{-- Overlay Caption --}}
-                                            <div class="news-caption-overlay">
-                                                <h5 class="card-title">
-                                                    <i class="bi bi-bookmark-fill"></i>
-                                                    {{ $big->title }}
-                                                    <span class="badge bg-primary ms-2">Utama</span>
-                                                </h5>
-                                                <p class="news-date mb-1">
-                                                    <i class="bi bi-calendar"></i>
-                                                    {{ $big->created_at->format('d/m/Y') }}
-                                                    <i class="bi bi-person"></i>
-                                                    Admin
-                                                </p>
-                                                <p>{{ $big->excerpt }}</p>
+                                    <a href="{{ route('news.show', $big->slug) }}" class="text-decoration-none">
+                                        <div class="card news-card-large mb-3 position-relative">
+                                            <div class="news-image-wrapper">
+                                                <img src="{{ asset('storage/' . $big->image) }}" class="news-image w-100"
+                                                    alt="{{ $big->title }}" />
+                                                <div class="news-caption-overlay">
+                                                    <h5 class="card-title">
+                                                        <i class="bi bi-bookmark-fill"></i>
+                                                        {{ $big->title }}
+                                                        <span class="badge bg-primary ms-2">Utama</span>
+                                                    </h5>
+                                                    <p class="news-date mb-1">
+                                                        <i class="bi bi-calendar"></i>
+                                                        {{ $big->created_at->format('d/m/Y') }}
+                                                        <i class="bi bi-person"></i>
+                                                        Admin
+                                                    </p>
+                                                    <p>{{ $big->excerpt }}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
+
                                 </div>
                             @endforeach
                         </div>
@@ -83,26 +85,30 @@
                     <div class="row">
                         @foreach ($smallNews as $small)
                             <div class="col-md-6 mb-3">
-                                <div class="card news-card h-100">
-                                    <img src="{{ asset($small->image) }}" class="card-img-top" alt="{{ $small->title }}" />
-                                    <div class="card-body">
-                                        <span class="badge bg-info mb-2">{{ $small->category->name }}</span>
-                                        <h6 class="card-title">
-                                            <i class="bi bi-chat-dots-fill"></i>
-                                            {{ $small->title }}
-                                        </h6>
-                                        <p class="news-date mb-1">
-                                            <i class="bi bi-calendar"></i>
-                                            {{ $small->created_at->format('d/m/Y') }}
-                                        </p>
-                                        <p class="news-author mb-0">
-                                            <i class="bi bi-person"></i>
-                                            Admin
-                                        </p>
+                                <a href="{{ route('news.show', $small->slug) }}" class="text-decoration-none">
+                                    <div class="card news-card h-100">
+                                        <img src="{{ asset('storage/' . $small->image) }}" class="card-img-top"
+                                            alt="{{ $small->title }}" />
+                                        <div class="card-body">
+                                            <span class="badge bg-info mb-2">{{ $small->category->name }}</span>
+                                            <h6 class="card-title">
+                                                <i class="bi bi-chat-dots-fill"></i>
+                                                {{ $small->title }}
+                                            </h6>
+                                            <p class="news-date mb-1">
+                                                <i class="bi bi-calendar"></i>
+                                                {{ $small->created_at->format('d/m/Y') }}
+                                            </p>
+                                            <p class="news-author mb-0">
+                                                <i class="bi bi-person"></i>
+                                                Admin
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
+
                     </div>
                 </div>
             </div>
