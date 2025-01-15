@@ -18,47 +18,49 @@
             <ul class="navbar-nav ms-auto align-items-center">
                 {{-- Beranda --}}
                 <li class="nav-item">
-                    <a class="nav-link active" href="landing.html">Beranda</a>
+                    <a class="nav-link  {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a>
                 </li>
 
                 {{-- Profil Sekolah --}}
+                {{-- Navbar --}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="profilDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle {{ request()->is('profil/*') ? 'active' : '' }}" href="#"
+                        id="profilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Profil Sekolah
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="profilDropdown">
                         <li>
-                            <a class="dropdown-item" href="profil-identitas.html">
-                                Identitas
+                            <a class="dropdown-item" href="{{ route('template.identitas') }}">
+                                Identitas Sekolah
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="profil-sejarah.html">
-                                Sejarah
+                            <a class="dropdown-item" href="{{ route('template.sejarah') }}">
+                                Sejarah Sekolah
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="profil-visi-misi.html">
-                                Visi & Misi
+                            <a class="dropdown-item" href="{{ route('template.visi') }}">
+                                Visi, Misi, dan Tujuan Sekolah
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="profil-struktur.html">
-                                Struktur
+                            <a class="dropdown-item" href="{{ route('template.struktur') }}">
+                                Struktur Organisasi
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="profil-kepala-guru.html">
-                                Kepala Sekolah
+                            <a class="dropdown-item" href="{{ route('template.tenagakerja') }}">
+                                Profil Kepala Sekolah, Guru, dan Tenaga Kependidikan
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="profil-tata-tertib.html">
+                            <a class="dropdown-item" href="{{ route('template.tatatertib') }}">
                                 Tata Tertib
                             </a>
                         </li>
                     </ul>
+
                 </li>
 
                 {{-- Berita dan Pengumuman --}}
@@ -92,12 +94,12 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="akademikDropdown">
                         <li>
-                            <a class="dropdown-item" href="kurikulum.html">
+                            <a class="dropdown-item" href="{{ route('akademik.kurikulum') }}">
                                 Kurikulum dan Mata Pelajaran
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="kalender-akademik.html">
+                            <a class="dropdown-item" href="{{ route('akademik.kalender') }}">
                                 Kalender Akademik
                             </a>
                         </li>
@@ -112,12 +114,12 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="tuDropdown">
                         <li>
-                            <a class="dropdown-item" href="sop.html">
+                            <a class="dropdown-item" href="{{ route('tatausaha.sop') }}">
                                 Standar Operasional Prosedur
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="ebook.html">
+                            <a class="dropdown-item"href="{{ route('tatausaha.ebook') }}">
                                 Buku Elektronik (E-Book)
                             </a>
                         </li>

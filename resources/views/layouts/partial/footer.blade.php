@@ -3,7 +3,7 @@
         {{-- Section 1: Logo dan Alamat --}}
         <div class="row mb-4 border-bottom pb-4 fade-in-up">
             <div class="col-md-12 text-center">
-                <img src="assets/img/logo.png" alt="Logo SMAN 3 Barabai" class="footer-logo mb-3"
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo SMAN 3 Barabai" class="footer-logo mb-3"
                     style="max-width: 120px" />
                 <p class="fw-bold">SMAN 3 Barabai</p>
                 <p class="text-muted">

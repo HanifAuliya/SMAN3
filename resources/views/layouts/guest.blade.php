@@ -50,29 +50,6 @@
         <p>Unggul dalam Prestasi, Berkarakter, dan Inovatif</p>
     </div>
 
-    {{-- Statistik --}}
-    <div id="statistik" class="statistics">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-3">
-                    <h2>500</h2>
-                    <p>Peserta Didik</p>
-                </div>
-                <div class="col-md-3">
-                    <h2>40</h2>
-                    <p>Guru</p>
-                </div>
-                <div class="col-md-3">
-                    <h2>12</h2>
-                    <p>Rombel</p>
-                </div>
-                <div class="col-md-3">
-                    <h2>30K</h2>
-                    <p>Luas Area (m²)</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     {{-- Main Content --}}
     @yield('content')

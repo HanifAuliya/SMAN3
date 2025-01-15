@@ -1,7 +1,30 @@
 @extends('layouts.guest')
 
 @section('content')
-    {{-- Berita Utama --}}
+    {{-- Statistik --}}
+    <div id="statistik" class="statistics">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <h2>500</h2>
+                    <p>Peserta Didik</p>
+                </div>
+                <div class="col-md-3">
+                    <h2>40</h2>
+                    <p>Guru</p>
+                </div>
+                <div class="col-md-3">
+                    <h2>12</h2>
+                    <p>Rombel</p>
+                </div>
+                <div class="col-md-3">
+                    <h2>30K</h2>
+                    <p>Luas Area (m²)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <section id="berita" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">
@@ -213,7 +236,7 @@
                     {{-- pengumuman --}}
                     <div class="mb-4">
                         <div class="category-title category-pengumuman">pengumuman</div>
-                        <<div class="row">
+                        <div class="row">
                             {{-- Berita Besar: Pengumuman --}}
                             @if ($mainPengumumanNews)
                                 <div class="col-lg-7">
@@ -264,84 +287,71 @@
                                     </div>
                                 @endforeach
                             </div>
+                        </div>
+
                     </div>
 
-                </div>
-            </div>
 
-            {{-- Kolom Kanan: Widget --}}
-            <div class="col-lg-4">
-                {{-- Widget Kepala Sekolah --}}
-                <div class="widget mb-4 widget-modern">
-                    <div class="widget-title">Kepala Sekolah</div>
-                    <div class="text-center">
-                        <img src="/assets/img/kepala.jpeg" alt="Kepala Sekolah" class="widget-headmaster-image" />
-                        <p class="mt-3 widget-headmaster-name">Nama Kepala Sekolah</p>
-                    </div>
                 </div>
-
-                {{-- Widget News --}}
-                <div class="widget mb-4 widget-modern">
-                    <div class="widget-title">Terbaru</div>
-                    <div class="d-flex mb-3 widget-news-item">
-                        <img src="assets/img/background.jpg" alt="News 1" class="widget-news-image" />
-                        <div>
-                            <h6 class="widget-news-title">
-                                <a href="#" class="widget-news-link">
-                                    Pengumuman pengumuman Semester Genap
-                                </a>
-                            </h6>
-                            <p class="text-muted main-meta">
-                                <i class="bi bi-calendar"></i>
-                                30/09/2023
-                                <i class="bi bi-person"></i>
-                                Admin
-                            </p>
+                {{-- Kolom Kanan: Kepala sekolah and Widget --}}
+                <div class="col-lg-4">
+                    {{-- Widget Kepala Sekolah --}}
+                    <div class="widget mb-4 widget-modern p-3 shadow-sm border rounded bg-white">
+                        <h4 class="widget-title text-center mb-3">Kepala Sekolah</h4>
+                        <div class="text-center">
+                            <img src="{{ asset('assets/img/kepala.jpeg') }}" alt="Kepala Sekolah"
+                                class="widget-headmaster-image img-fluid shadow-sm mb-3" />
+                            <p class="mt-3 widget-headmaster-name fw-bold">H. MUHAMAD RAHMADI, S.PD, MM</p>
                         </div>
                     </div>
-                    <div class="d-flex mb-3 widget-news-item">
-                        <img src="assets/img/background.jpg" alt="News 2" class="widget-news-image" />
-                        <div>
-                            <h6 class="widget-news-title">
-                                <a href="#" class="widget-news-link">
-                                    Pengumuman Kegiatan Sekloooah berdasarkan kisahnyataasdasd
-                                    Tahun ajaran 2024/2024
-                                </a>
-                            </h6>
-                            <p class="text-muted main-meta">
-                                <i class="bi bi-calendar"></i>
-                                30/09/2023
-                                <i class="bi bi-person"></i>
-                                Admin
-                            </p>
-                        </div>
+
+                    {{-- Widget News --}}
+                    <div class="widget mb-4 widget-modern">
+                        <div class="widget-title">Terbaru</div>
+                        @foreach ($latestNews as $news)
+                            <div class="d-flex mb-3 widget-news-item">
+                                <img src="{{ asset($news->image) }}" alt="{{ $news->title }}"
+                                    class="widget-news-image" />
+                                <div>
+                                    <h6 class="widget-news-title">
+                                        <a href="{{ route('news.show', $news->slug) }}" class="widget-news-link">
+                                            {{ Str::limit($news->title, 50) }}
+                                        </a>
+                                    </h6>
+                                    <p class="text-muted main-meta">
+                                        <i class="bi bi-calendar"></i>
+                                        {{ $news->created_at->format('d/m/Y') }}
+                                        <i class="bi bi-person"></i>
+                                        {{ $news->user->name }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    {{-- Widget Jumlah Pengunjung --}}
+                    <div class="widget widget-modern">
+                        <div class="widget-title">Jumlah Pengunjung</div>
+                        <ul class="list-unstyled widget-visitors">
+                            <li>
+                                <span>Hari ini:</span>
+                                <strong>{{ $visitorCounts['today'] }}</strong>
+                            </li>
+                            <li>
+                                <span>Minggu ini:</span>
+                                <strong>{{ $visitorCounts['week'] }}</strong>
+                            </li>
+                            <li>
+                                <span>Bulan ini:</span>
+                                <strong>{{ $visitorCounts['month'] }}</strong>
+                            </li>
+                            <li>
+                                <span>Total:</span>
+                                <strong>{{ $visitorCounts['total'] }}</strong>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
-                {{-- Widget Jumlah Pengunjung --}}
-                <div class="widget widget-modern">
-                    <div class="widget-title">Jumlah Pengunjung</div>
-                    <ul class="list-unstyled widget-visitors">
-                        <li>
-                            <span>Hari ini:</span>
-                            <strong>150</strong>
-                        </li>
-                        <li>
-                            <span>Minggu ini:</span>
-                            <strong>1,050</strong>
-                        </li>
-                        <li>
-                            <span>Bulan ini:</span>
-                            <strong>4,500</strong>
-                        </li>
-                        <li>
-                            <span>Total:</span>
-                            <strong>120,000</strong>
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </div>
-        </div>
     </section>
 @endsection

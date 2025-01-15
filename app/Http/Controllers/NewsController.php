@@ -26,6 +26,17 @@ class NewsController extends Controller
         $beritaSekolahNews = $this->getNewsByCategory('Berita Sekolah');
         $pengumumanNews = $this->getNewsByCategory('Pengumuman');
 
+        // Ambil berita terbaru untuk widget
+        $latestNews = $news->take(5); // Ambil 5 berita terbaru untuk ditampilkan di widget
+
+        // Jumlah pengunjung (contoh data statis, Anda dapat mengganti ini dengan data dari database)
+        $visitorCounts = [
+            'today' => 150,
+            'week' => 1050,
+            'month' => 4500,
+            'total' => 120000,
+        ];
+
         return view('home', [
             'bigNews' => $bigNews,
             'smallNews' => $smallNews,
@@ -35,8 +46,11 @@ class NewsController extends Controller
             'smallBeritaSekolahNews' => $beritaSekolahNews['smallNews'],
             'mainPengumumanNews' => $pengumumanNews['mainNews'],
             'smallPengumumanNews' => $pengumumanNews['smallNews'],
+            'latestNews' => $latestNews,
+            'visitorCounts' => $visitorCounts,
         ]);
     }
+
 
 
     private function getNewsByCategory($categoryName)
