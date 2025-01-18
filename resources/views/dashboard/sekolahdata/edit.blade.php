@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Edit Sekolah Data - Dashboard SMAN 3')
+
 @section('content')
     <div class="container py-5">
         <h1 class="mb-4">Edit Data</h1>

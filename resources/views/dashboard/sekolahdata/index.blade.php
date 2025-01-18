@@ -1,4 +1,6 @@
-@extends('layouts.app') <!-- Gunakan layout dashboard -->
+@extends('layouts.app')
+
+@section('title', 'Tabel Sekolah Data - Dashboard SMAN 3')
 
 @section('content')
     <div class="container py-5">

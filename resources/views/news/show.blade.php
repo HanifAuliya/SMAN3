@@ -1,5 +1,7 @@
 @extends('layouts.guest')
 
+@section('title', 'Berita - SMAN 3 Barabai')
+
 @section('content')
     <div class="container mt-5">
         <div class="row">

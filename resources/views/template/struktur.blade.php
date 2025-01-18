@@ -1,5 +1,8 @@
 @extends('layouts.guest')
 
+@section('title', 'Struktur Organisasi - SMAN 3 Barabai')
+
+
 @section('content')
     {{-- Content --}}
     <div class="container py-5">

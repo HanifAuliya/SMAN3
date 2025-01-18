@@ -1,5 +1,7 @@
 @extends('layouts.guest')
 
+@section('title', 'SOP - SMAN 3 Barabai')
+
 @section('content')
     {{-- Content --}}
     <div class="container py-5">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beranda - SMAN 3 Barabai</title>
+    <title>@yield('title', 'Beranda - SMAN 3 Barabai')</title>
 
     {{-- Meta SEO --}}
     <meta name="description"
