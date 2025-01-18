@@ -102,23 +102,23 @@
                     </div>
                 </div>
                 {{-- Widget News --}}
-                <div class="widget mb-4 widget-modern p-3 shadow-sm border rounded bg-white">
-                    <h4 class="widget-title mb-3">Berita Terbaru</h4>
+                <div class="widget mb-4 widget-modern">
+                    <div class="widget-title">Terbaru</div>
                     @foreach ($latestNews as $news)
                         <div class="d-flex mb-3 widget-news-item">
-                            <img src="{{ asset($news->image) }}" alt="{{ $news->title }}"
-                                class="widget-news-image rounded shadow-sm me-3"
-                                style="width: 70px; height: 70px; object-fit: cover;" />
+                            <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}"
+                                class="widget-news-image" />
                             <div>
                                 <h6 class="widget-news-title">
-                                    <a href="{{ route('news.show', $news->slug) }}"
-                                        class="widget-news-link text-decoration-none">
+                                    <a href="{{ route('news.show', $news->slug) }}" class="widget-news-link">
                                         {{ Str::limit($news->title, 50) }}
                                     </a>
                                 </h6>
-                                <p class="text-muted small mb-0">
-                                    <i class="bi bi-calendar"></i> {{ $news->created_at->format('d/m/Y') }}
-                                    <i class="bi bi-person"></i> {{ $news->user->name }}
+                                <p class="text-muted main-meta">
+                                    <i class="bi bi-calendar"></i>
+                                    {{ $news->created_at->format('d/m/Y') }}
+                                    <i class="bi bi-person"></i>
+                                    {{ $news->user->name }}
                                 </p>
                             </div>
                         </div>

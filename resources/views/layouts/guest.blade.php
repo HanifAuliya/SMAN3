@@ -44,8 +44,8 @@
     @include('layouts.partial.navbar')
 
     {{-- Hero Section --}}
-    <div class="hero">
-        {{-- BG cek di CSS --}}
+    <div class="hero"
+        style="--bg1: url('{{ asset('assets/img/background.jpg') }}'); --bg2: url('{{ asset('assets/img/background2.jpg') }}');">
         <h1>Selamat Datang di SMAN 3 Barabai</h1>
         <p>Unggul dalam Prestasi, Berkarakter, dan Inovatif</p>
     </div>
