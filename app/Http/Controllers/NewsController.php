@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Category;
 use App\Models\SekolahData;
+use App\Models\Visitor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -15,6 +17,22 @@ class NewsController extends Controller
      */
     public function index()
     {
+
+        $today = Carbon::today();
+        $weekStart = Carbon::now()->startOfWeek();
+        $monthStart = Carbon::now()->startOfMonth();
+
+        // Hitung data pengunjung dari tabel visitors
+        $visitorCounts = [
+            'today' => Visitor::where('visited_date', $today)->count(),
+            'week' => Visitor::whereBetween('visited_date', [$weekStart, Carbon::now()])->count(),
+            'month' => Visitor::whereBetween('visited_date', [$monthStart, Carbon::now()])->count(),
+            'total' => Visitor::count(),
+        ];
+
+        // Debug data pengunjung
+        $allVisitors = Visitor::all();
+
         // Ambil semua berita untuk bagian umum
         $news = News::with(['user', 'category'])->latest()->get();
 
@@ -30,13 +48,6 @@ class NewsController extends Controller
         // Ambil berita terbaru untuk widget
         $latestNews = $news->take(5); // Ambil 5 berita terbaru untuk ditampilkan di widget
 
-        // Jumlah pengunjung (contoh data statis, Anda dapat mengganti ini dengan data dari database)
-        $visitorCounts = [
-            'today' => 150,
-            'week' => 1050,
-            'month' => 4500,
-            'total' => 120000,
-        ];
         $data = SekolahData::all();
 
         return view('home', [

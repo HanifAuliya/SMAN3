@@ -352,6 +352,7 @@
                     </div>
 
                     {{-- Widget Jumlah Pengunjung --}}
+                    {{-- Widget Jumlah Pengunjung --}}
                     <div class="widget widget-modern">
                         <div class="widget-title">Jumlah Pengunjung</div>
                         <ul class="list-unstyled widget-visitors">
@@ -373,6 +374,7 @@
                             </li>
                         </ul>
                     </div>
+
                 </div>
             </div>
     </section>
