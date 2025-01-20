@@ -18,24 +18,23 @@ class RecordVisitor
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Log untuk memastikan middleware dijalankan
-        Log::info('RecordVisitor middleware dipanggil.', [
-            'ip_address' => $request->ip(),
-            'user_agent' => $request->userAgent(),
-        ]);
+        $today = \Carbon\Carbon::today();
 
-        $today = Carbon::today();
-
-        // Cek apakah IP sudah tercatat hari ini
-        $visitorExists = Visitor::where('ip_address', $request->ip())
+        $visitorExists = \App\Models\Visitor::where('ip_address', $request->ip())
             ->where('visited_date', $today)
             ->exists();
 
         if (!$visitorExists) {
-            Visitor::create([
+            $visitor = \App\Models\Visitor::create([
                 'ip_address' => $request->ip(),
                 'visited_date' => $today,
             ]);
+
+            Log::info('Data berhasil disimpan ke database.', [
+                'visitor' => $visitor,
+            ]);
+        } else {
+            Log::info('Pengunjung sudah tercatat hari ini.');
         }
 
         return $next($request);
